@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package net.floodlightcontroller.packetstreamer.thrift;
+package org.sdnplatform.sync.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -30,28 +30,25 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * A struct that defines switch port tuple
- */
-@SuppressWarnings("all") public class SwitchPortTuple implements org.apache.thrift.TBase<SwitchPortTuple, SwitchPortTuple._Fields>, java.io.Serializable, Cloneable {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("SwitchPortTuple");
+@SuppressWarnings("all") public class SyncError implements org.apache.thrift.TBase<SyncError, SyncError._Fields>, java.io.Serializable, Cloneable {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("SyncError");
 
-  private static final org.apache.thrift.protocol.TField DPID_FIELD_DESC = new org.apache.thrift.protocol.TField("dpid", org.apache.thrift.protocol.TType.I64, (short)1);
-  private static final org.apache.thrift.protocol.TField PORT_FIELD_DESC = new org.apache.thrift.protocol.TField("port", org.apache.thrift.protocol.TType.I16, (short)2);
+  private static final org.apache.thrift.protocol.TField ERROR_CODE_FIELD_DESC = new org.apache.thrift.protocol.TField("errorCode", org.apache.thrift.protocol.TType.I32, (short)1);
+  private static final org.apache.thrift.protocol.TField MESSAGE_FIELD_DESC = new org.apache.thrift.protocol.TField("message", org.apache.thrift.protocol.TType.STRING, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new SwitchPortTupleStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new SwitchPortTupleTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new SyncErrorStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new SyncErrorTupleSchemeFactory());
   }
 
-  public long dpid; // required
-  public short port; // required
+  public int errorCode; // required
+  public String message; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    DPID((short)1, "dpid"),
-    PORT((short)2, "port");
+    ERROR_CODE((short)1, "errorCode"),
+    MESSAGE((short)2, "message");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -66,10 +63,10 @@ import org.slf4j.LoggerFactory;
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // DPID
-          return DPID;
-        case 2: // PORT
-          return PORT;
+        case 1: // ERROR_CODE
+          return ERROR_CODE;
+        case 2: // MESSAGE
+          return MESSAGE;
         default:
           return null;
       }
@@ -110,116 +107,116 @@ import org.slf4j.LoggerFactory;
   }
 
   // isset id assignments
-  private static final int __DPID_ISSET_ID = 0;
-  private static final int __PORT_ISSET_ID = 1;
+  private static final int __ERRORCODE_ISSET_ID = 0;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.DPID, new org.apache.thrift.meta_data.FieldMetaData("dpid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
-    tmpMap.put(_Fields.PORT, new org.apache.thrift.meta_data.FieldMetaData("port", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I16)));
+    tmpMap.put(_Fields.ERROR_CODE, new org.apache.thrift.meta_data.FieldMetaData("errorCode", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I32)));
+    tmpMap.put(_Fields.MESSAGE, new org.apache.thrift.meta_data.FieldMetaData("message", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.STRING)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(SwitchPortTuple.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(SyncError.class, metaDataMap);
   }
 
-  public SwitchPortTuple() {
+  public SyncError() {
   }
 
-  public SwitchPortTuple(
-    long dpid,
-    short port)
+  public SyncError(
+    int errorCode,
+    String message)
   {
     this();
-    this.dpid = dpid;
-    setDpidIsSet(true);
-    this.port = port;
-    setPortIsSet(true);
+    this.errorCode = errorCode;
+    setErrorCodeIsSet(true);
+    this.message = message;
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public SwitchPortTuple(SwitchPortTuple other) {
+  public SyncError(SyncError other) {
     __isset_bitfield = other.__isset_bitfield;
-    this.dpid = other.dpid;
-    this.port = other.port;
+    this.errorCode = other.errorCode;
+    if (other.isSetMessage()) {
+      this.message = other.message;
+    }
   }
 
-  public SwitchPortTuple deepCopy() {
-    return new SwitchPortTuple(this);
+  public SyncError deepCopy() {
+    return new SyncError(this);
   }
 
   @Override
   public void clear() {
-    setDpidIsSet(false);
-    this.dpid = 0;
-    setPortIsSet(false);
-    this.port = 0;
+    setErrorCodeIsSet(false);
+    this.errorCode = 0;
+    this.message = null;
   }
 
-  public long getDpid() {
-    return this.dpid;
+  public int getErrorCode() {
+    return this.errorCode;
   }
 
-  public SwitchPortTuple setDpid(long dpid) {
-    this.dpid = dpid;
-    setDpidIsSet(true);
+  public SyncError setErrorCode(int errorCode) {
+    this.errorCode = errorCode;
+    setErrorCodeIsSet(true);
     return this;
   }
 
-  public void unsetDpid() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __DPID_ISSET_ID);
+  public void unsetErrorCode() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __ERRORCODE_ISSET_ID);
   }
 
-  /** Returns true if field dpid is set (has been assigned a value) and false otherwise */
-  public boolean isSetDpid() {
-    return EncodingUtils.testBit(__isset_bitfield, __DPID_ISSET_ID);
+  /** Returns true if field errorCode is set (has been assigned a value) and false otherwise */
+  public boolean isSetErrorCode() {
+    return EncodingUtils.testBit(__isset_bitfield, __ERRORCODE_ISSET_ID);
   }
 
-  public void setDpidIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __DPID_ISSET_ID, value);
+  public void setErrorCodeIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __ERRORCODE_ISSET_ID, value);
   }
 
-  public short getPort() {
-    return this.port;
+  public String getMessage() {
+    return this.message;
   }
 
-  public SwitchPortTuple setPort(short port) {
-    this.port = port;
-    setPortIsSet(true);
+  public SyncError setMessage(String message) {
+    this.message = message;
     return this;
   }
 
-  public void unsetPort() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __PORT_ISSET_ID);
+  public void unsetMessage() {
+    this.message = null;
   }
 
-  /** Returns true if field port is set (has been assigned a value) and false otherwise */
-  public boolean isSetPort() {
-    return EncodingUtils.testBit(__isset_bitfield, __PORT_ISSET_ID);
+  /** Returns true if field message is set (has been assigned a value) and false otherwise */
+  public boolean isSetMessage() {
+    return this.message != null;
   }
 
-  public void setPortIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __PORT_ISSET_ID, value);
+  public void setMessageIsSet(boolean value) {
+    if (!value) {
+      this.message = null;
+    }
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case DPID:
+    case ERROR_CODE:
       if (value == null) {
-        unsetDpid();
+        unsetErrorCode();
       } else {
-        setDpid((Long)value);
+        setErrorCode((Integer)value);
       }
       break;
 
-    case PORT:
+    case MESSAGE:
       if (value == null) {
-        unsetPort();
+        unsetMessage();
       } else {
-        setPort((Short)value);
+        setMessage((String)value);
       }
       break;
 
@@ -228,11 +225,11 @@ import org.slf4j.LoggerFactory;
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case DPID:
-      return Long.valueOf(getDpid());
+    case ERROR_CODE:
+      return Integer.valueOf(getErrorCode());
 
-    case PORT:
-      return Short.valueOf(getPort());
+    case MESSAGE:
+      return getMessage();
 
     }
     throw new IllegalStateException();
@@ -245,10 +242,10 @@ import org.slf4j.LoggerFactory;
     }
 
     switch (field) {
-    case DPID:
-      return isSetDpid();
-    case PORT:
-      return isSetPort();
+    case ERROR_CODE:
+      return isSetErrorCode();
+    case MESSAGE:
+      return isSetMessage();
     }
     throw new IllegalStateException();
   }
@@ -257,30 +254,30 @@ import org.slf4j.LoggerFactory;
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof SwitchPortTuple)
-      return this.equals((SwitchPortTuple)that);
+    if (that instanceof SyncError)
+      return this.equals((SyncError)that);
     return false;
   }
 
-  public boolean equals(SwitchPortTuple that) {
+  public boolean equals(SyncError that) {
     if (that == null)
       return false;
 
-    boolean this_present_dpid = true;
-    boolean that_present_dpid = true;
-    if (this_present_dpid || that_present_dpid) {
-      if (!(this_present_dpid && that_present_dpid))
+    boolean this_present_errorCode = true;
+    boolean that_present_errorCode = true;
+    if (this_present_errorCode || that_present_errorCode) {
+      if (!(this_present_errorCode && that_present_errorCode))
         return false;
-      if (this.dpid != that.dpid)
+      if (this.errorCode != that.errorCode)
         return false;
     }
 
-    boolean this_present_port = true;
-    boolean that_present_port = true;
-    if (this_present_port || that_present_port) {
-      if (!(this_present_port && that_present_port))
+    boolean this_present_message = true && this.isSetMessage();
+    boolean that_present_message = true && that.isSetMessage();
+    if (this_present_message || that_present_message) {
+      if (!(this_present_message && that_present_message))
         return false;
-      if (this.port != that.port)
+      if (!this.message.equals(that.message))
         return false;
     }
 
@@ -292,30 +289,30 @@ import org.slf4j.LoggerFactory;
     return 0;
   }
 
-  public int compareTo(SwitchPortTuple other) {
+  public int compareTo(SyncError other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
-    SwitchPortTuple typedOther = (SwitchPortTuple)other;
+    SyncError typedOther = (SyncError)other;
 
-    lastComparison = Boolean.valueOf(isSetDpid()).compareTo(typedOther.isSetDpid());
+    lastComparison = Boolean.valueOf(isSetErrorCode()).compareTo(typedOther.isSetErrorCode());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetDpid()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.dpid, typedOther.dpid);
+    if (isSetErrorCode()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.errorCode, typedOther.errorCode);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetPort()).compareTo(typedOther.isSetPort());
+    lastComparison = Boolean.valueOf(isSetMessage()).compareTo(typedOther.isSetMessage());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetPort()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.port, typedOther.port);
+    if (isSetMessage()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.message, typedOther.message);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -337,15 +334,19 @@ import org.slf4j.LoggerFactory;
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("SwitchPortTuple(");
+    StringBuilder sb = new StringBuilder("SyncError(");
     boolean first = true;
 
-    sb.append("dpid:");
-    sb.append(this.dpid);
+    sb.append("errorCode:");
+    sb.append(this.errorCode);
     first = false;
     if (!first) sb.append(", ");
-    sb.append("port:");
-    sb.append(this.port);
+    sb.append("message:");
+    if (this.message == null) {
+      sb.append("null");
+    } else {
+      sb.append(this.message);
+    }
     first = false;
     sb.append(")");
     return sb.toString();
@@ -374,15 +375,15 @@ import org.slf4j.LoggerFactory;
     }
   }
 
-  private static class SwitchPortTupleStandardSchemeFactory implements SchemeFactory {
-    public SwitchPortTupleStandardScheme getScheme() {
-      return new SwitchPortTupleStandardScheme();
+  private static class SyncErrorStandardSchemeFactory implements SchemeFactory {
+    public SyncErrorStandardScheme getScheme() {
+      return new SyncErrorStandardScheme();
     }
   }
 
-  private static class SwitchPortTupleStandardScheme extends StandardScheme<SwitchPortTuple> {
+  private static class SyncErrorStandardScheme extends StandardScheme<SyncError> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, SyncError struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -392,18 +393,18 @@ import org.slf4j.LoggerFactory;
           break;
         }
         switch (schemeField.id) {
-          case 1: // DPID
-            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
-              struct.dpid = iprot.readI64();
-              struct.setDpidIsSet(true);
+          case 1: // ERROR_CODE
+            if (schemeField.type == org.apache.thrift.protocol.TType.I32) {
+              struct.errorCode = iprot.readI32();
+              struct.setErrorCodeIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // PORT
-            if (schemeField.type == org.apache.thrift.protocol.TType.I16) {
-              struct.port = iprot.readI16();
-              struct.setPortIsSet(true);
+          case 2: // MESSAGE
+            if (schemeField.type == org.apache.thrift.protocol.TType.STRING) {
+              struct.message = iprot.readString();
+              struct.setMessageIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -419,60 +420,62 @@ import org.slf4j.LoggerFactory;
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, SyncError struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(DPID_FIELD_DESC);
-      oprot.writeI64(struct.dpid);
+      oprot.writeFieldBegin(ERROR_CODE_FIELD_DESC);
+      oprot.writeI32(struct.errorCode);
       oprot.writeFieldEnd();
-      oprot.writeFieldBegin(PORT_FIELD_DESC);
-      oprot.writeI16(struct.port);
-      oprot.writeFieldEnd();
+      if (struct.message != null) {
+        oprot.writeFieldBegin(MESSAGE_FIELD_DESC);
+        oprot.writeString(struct.message);
+        oprot.writeFieldEnd();
+      }
       oprot.writeFieldStop();
       oprot.writeStructEnd();
     }
 
   }
 
-  private static class SwitchPortTupleTupleSchemeFactory implements SchemeFactory {
-    public SwitchPortTupleTupleScheme getScheme() {
-      return new SwitchPortTupleTupleScheme();
+  private static class SyncErrorTupleSchemeFactory implements SchemeFactory {
+    public SyncErrorTupleScheme getScheme() {
+      return new SyncErrorTupleScheme();
     }
   }
 
-  private static class SwitchPortTupleTupleScheme extends TupleScheme<SwitchPortTuple> {
+  private static class SyncErrorTupleScheme extends TupleScheme<SyncError> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, SyncError struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
       BitSet optionals = new BitSet();
-      if (struct.isSetDpid()) {
+      if (struct.isSetErrorCode()) {
         optionals.set(0);
       }
-      if (struct.isSetPort()) {
+      if (struct.isSetMessage()) {
         optionals.set(1);
       }
       oprot.writeBitSet(optionals, 2);
-      if (struct.isSetDpid()) {
-        oprot.writeI64(struct.dpid);
+      if (struct.isSetErrorCode()) {
+        oprot.writeI32(struct.errorCode);
       }
-      if (struct.isSetPort()) {
-        oprot.writeI16(struct.port);
+      if (struct.isSetMessage()) {
+        oprot.writeString(struct.message);
       }
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, SyncError struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
       BitSet incoming = iprot.readBitSet(2);
       if (incoming.get(0)) {
-        struct.dpid = iprot.readI64();
-        struct.setDpidIsSet(true);
+        struct.errorCode = iprot.readI32();
+        struct.setErrorCodeIsSet(true);
       }
       if (incoming.get(1)) {
-        struct.port = iprot.readI16();
-        struct.setPortIsSet(true);
+        struct.message = iprot.readString();
+        struct.setMessageIsSet(true);
       }
     }
   }

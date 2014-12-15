@@ -4,7 +4,7 @@
  * DO NOT EDIT UNLESS YOU ARE SURE THAT YOU KNOW WHAT YOU ARE DOING
  *  @generated
  */
-package net.floodlightcontroller.packetstreamer.thrift;
+package org.sdnplatform.sync.thrift;
 
 import org.apache.thrift.scheme.IScheme;
 import org.apache.thrift.scheme.SchemeFactory;
@@ -30,28 +30,25 @@ import java.util.Arrays;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * A struct that defines switch port tuple
- */
-@SuppressWarnings("all") public class SwitchPortTuple implements org.apache.thrift.TBase<SwitchPortTuple, SwitchPortTuple._Fields>, java.io.Serializable, Cloneable {
-  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("SwitchPortTuple");
+@SuppressWarnings("all") public class ClockEntry implements org.apache.thrift.TBase<ClockEntry, ClockEntry._Fields>, java.io.Serializable, Cloneable {
+  private static final org.apache.thrift.protocol.TStruct STRUCT_DESC = new org.apache.thrift.protocol.TStruct("ClockEntry");
 
-  private static final org.apache.thrift.protocol.TField DPID_FIELD_DESC = new org.apache.thrift.protocol.TField("dpid", org.apache.thrift.protocol.TType.I64, (short)1);
-  private static final org.apache.thrift.protocol.TField PORT_FIELD_DESC = new org.apache.thrift.protocol.TField("port", org.apache.thrift.protocol.TType.I16, (short)2);
+  private static final org.apache.thrift.protocol.TField NODE_ID_FIELD_DESC = new org.apache.thrift.protocol.TField("nodeId", org.apache.thrift.protocol.TType.I16, (short)1);
+  private static final org.apache.thrift.protocol.TField VERSION_FIELD_DESC = new org.apache.thrift.protocol.TField("version", org.apache.thrift.protocol.TType.I64, (short)2);
 
   private static final Map<Class<? extends IScheme>, SchemeFactory> schemes = new HashMap<Class<? extends IScheme>, SchemeFactory>();
   static {
-    schemes.put(StandardScheme.class, new SwitchPortTupleStandardSchemeFactory());
-    schemes.put(TupleScheme.class, new SwitchPortTupleTupleSchemeFactory());
+    schemes.put(StandardScheme.class, new ClockEntryStandardSchemeFactory());
+    schemes.put(TupleScheme.class, new ClockEntryTupleSchemeFactory());
   }
 
-  public long dpid; // required
-  public short port; // required
+  public short nodeId; // required
+  public long version; // required
 
   /** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
   public enum _Fields implements org.apache.thrift.TFieldIdEnum {
-    DPID((short)1, "dpid"),
-    PORT((short)2, "port");
+    NODE_ID((short)1, "nodeId"),
+    VERSION((short)2, "version");
 
     private static final Map<String, _Fields> byName = new HashMap<String, _Fields>();
 
@@ -66,10 +63,10 @@ import org.slf4j.LoggerFactory;
      */
     public static _Fields findByThriftId(int fieldId) {
       switch(fieldId) {
-        case 1: // DPID
-          return DPID;
-        case 2: // PORT
-          return PORT;
+        case 1: // NODE_ID
+          return NODE_ID;
+        case 2: // VERSION
+          return VERSION;
         default:
           return null;
       }
@@ -110,116 +107,116 @@ import org.slf4j.LoggerFactory;
   }
 
   // isset id assignments
-  private static final int __DPID_ISSET_ID = 0;
-  private static final int __PORT_ISSET_ID = 1;
+  private static final int __NODEID_ISSET_ID = 0;
+  private static final int __VERSION_ISSET_ID = 1;
   private byte __isset_bitfield = 0;
   public static final Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> metaDataMap;
   static {
     Map<_Fields, org.apache.thrift.meta_data.FieldMetaData> tmpMap = new EnumMap<_Fields, org.apache.thrift.meta_data.FieldMetaData>(_Fields.class);
-    tmpMap.put(_Fields.DPID, new org.apache.thrift.meta_data.FieldMetaData("dpid", org.apache.thrift.TFieldRequirementType.DEFAULT, 
-        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
-    tmpMap.put(_Fields.PORT, new org.apache.thrift.meta_data.FieldMetaData("port", org.apache.thrift.TFieldRequirementType.DEFAULT, 
+    tmpMap.put(_Fields.NODE_ID, new org.apache.thrift.meta_data.FieldMetaData("nodeId", org.apache.thrift.TFieldRequirementType.REQUIRED, 
         new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I16)));
+    tmpMap.put(_Fields.VERSION, new org.apache.thrift.meta_data.FieldMetaData("version", org.apache.thrift.TFieldRequirementType.REQUIRED, 
+        new org.apache.thrift.meta_data.FieldValueMetaData(org.apache.thrift.protocol.TType.I64)));
     metaDataMap = Collections.unmodifiableMap(tmpMap);
-    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(SwitchPortTuple.class, metaDataMap);
+    org.apache.thrift.meta_data.FieldMetaData.addStructMetaDataMap(ClockEntry.class, metaDataMap);
   }
 
-  public SwitchPortTuple() {
+  public ClockEntry() {
   }
 
-  public SwitchPortTuple(
-    long dpid,
-    short port)
+  public ClockEntry(
+    short nodeId,
+    long version)
   {
     this();
-    this.dpid = dpid;
-    setDpidIsSet(true);
-    this.port = port;
-    setPortIsSet(true);
+    this.nodeId = nodeId;
+    setNodeIdIsSet(true);
+    this.version = version;
+    setVersionIsSet(true);
   }
 
   /**
    * Performs a deep copy on <i>other</i>.
    */
-  public SwitchPortTuple(SwitchPortTuple other) {
+  public ClockEntry(ClockEntry other) {
     __isset_bitfield = other.__isset_bitfield;
-    this.dpid = other.dpid;
-    this.port = other.port;
+    this.nodeId = other.nodeId;
+    this.version = other.version;
   }
 
-  public SwitchPortTuple deepCopy() {
-    return new SwitchPortTuple(this);
+  public ClockEntry deepCopy() {
+    return new ClockEntry(this);
   }
 
   @Override
   public void clear() {
-    setDpidIsSet(false);
-    this.dpid = 0;
-    setPortIsSet(false);
-    this.port = 0;
+    setNodeIdIsSet(false);
+    this.nodeId = 0;
+    setVersionIsSet(false);
+    this.version = 0;
   }
 
-  public long getDpid() {
-    return this.dpid;
+  public short getNodeId() {
+    return this.nodeId;
   }
 
-  public SwitchPortTuple setDpid(long dpid) {
-    this.dpid = dpid;
-    setDpidIsSet(true);
+  public ClockEntry setNodeId(short nodeId) {
+    this.nodeId = nodeId;
+    setNodeIdIsSet(true);
     return this;
   }
 
-  public void unsetDpid() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __DPID_ISSET_ID);
+  public void unsetNodeId() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __NODEID_ISSET_ID);
   }
 
-  /** Returns true if field dpid is set (has been assigned a value) and false otherwise */
-  public boolean isSetDpid() {
-    return EncodingUtils.testBit(__isset_bitfield, __DPID_ISSET_ID);
+  /** Returns true if field nodeId is set (has been assigned a value) and false otherwise */
+  public boolean isSetNodeId() {
+    return EncodingUtils.testBit(__isset_bitfield, __NODEID_ISSET_ID);
   }
 
-  public void setDpidIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __DPID_ISSET_ID, value);
+  public void setNodeIdIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __NODEID_ISSET_ID, value);
   }
 
-  public short getPort() {
-    return this.port;
+  public long getVersion() {
+    return this.version;
   }
 
-  public SwitchPortTuple setPort(short port) {
-    this.port = port;
-    setPortIsSet(true);
+  public ClockEntry setVersion(long version) {
+    this.version = version;
+    setVersionIsSet(true);
     return this;
   }
 
-  public void unsetPort() {
-    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __PORT_ISSET_ID);
+  public void unsetVersion() {
+    __isset_bitfield = EncodingUtils.clearBit(__isset_bitfield, __VERSION_ISSET_ID);
   }
 
-  /** Returns true if field port is set (has been assigned a value) and false otherwise */
-  public boolean isSetPort() {
-    return EncodingUtils.testBit(__isset_bitfield, __PORT_ISSET_ID);
+  /** Returns true if field version is set (has been assigned a value) and false otherwise */
+  public boolean isSetVersion() {
+    return EncodingUtils.testBit(__isset_bitfield, __VERSION_ISSET_ID);
   }
 
-  public void setPortIsSet(boolean value) {
-    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __PORT_ISSET_ID, value);
+  public void setVersionIsSet(boolean value) {
+    __isset_bitfield = EncodingUtils.setBit(__isset_bitfield, __VERSION_ISSET_ID, value);
   }
 
   public void setFieldValue(_Fields field, Object value) {
     switch (field) {
-    case DPID:
+    case NODE_ID:
       if (value == null) {
-        unsetDpid();
+        unsetNodeId();
       } else {
-        setDpid((Long)value);
+        setNodeId((Short)value);
       }
       break;
 
-    case PORT:
+    case VERSION:
       if (value == null) {
-        unsetPort();
+        unsetVersion();
       } else {
-        setPort((Short)value);
+        setVersion((Long)value);
       }
       break;
 
@@ -228,11 +225,11 @@ import org.slf4j.LoggerFactory;
 
   public Object getFieldValue(_Fields field) {
     switch (field) {
-    case DPID:
-      return Long.valueOf(getDpid());
+    case NODE_ID:
+      return Short.valueOf(getNodeId());
 
-    case PORT:
-      return Short.valueOf(getPort());
+    case VERSION:
+      return Long.valueOf(getVersion());
 
     }
     throw new IllegalStateException();
@@ -245,10 +242,10 @@ import org.slf4j.LoggerFactory;
     }
 
     switch (field) {
-    case DPID:
-      return isSetDpid();
-    case PORT:
-      return isSetPort();
+    case NODE_ID:
+      return isSetNodeId();
+    case VERSION:
+      return isSetVersion();
     }
     throw new IllegalStateException();
   }
@@ -257,30 +254,30 @@ import org.slf4j.LoggerFactory;
   public boolean equals(Object that) {
     if (that == null)
       return false;
-    if (that instanceof SwitchPortTuple)
-      return this.equals((SwitchPortTuple)that);
+    if (that instanceof ClockEntry)
+      return this.equals((ClockEntry)that);
     return false;
   }
 
-  public boolean equals(SwitchPortTuple that) {
+  public boolean equals(ClockEntry that) {
     if (that == null)
       return false;
 
-    boolean this_present_dpid = true;
-    boolean that_present_dpid = true;
-    if (this_present_dpid || that_present_dpid) {
-      if (!(this_present_dpid && that_present_dpid))
+    boolean this_present_nodeId = true;
+    boolean that_present_nodeId = true;
+    if (this_present_nodeId || that_present_nodeId) {
+      if (!(this_present_nodeId && that_present_nodeId))
         return false;
-      if (this.dpid != that.dpid)
+      if (this.nodeId != that.nodeId)
         return false;
     }
 
-    boolean this_present_port = true;
-    boolean that_present_port = true;
-    if (this_present_port || that_present_port) {
-      if (!(this_present_port && that_present_port))
+    boolean this_present_version = true;
+    boolean that_present_version = true;
+    if (this_present_version || that_present_version) {
+      if (!(this_present_version && that_present_version))
         return false;
-      if (this.port != that.port)
+      if (this.version != that.version)
         return false;
     }
 
@@ -292,30 +289,30 @@ import org.slf4j.LoggerFactory;
     return 0;
   }
 
-  public int compareTo(SwitchPortTuple other) {
+  public int compareTo(ClockEntry other) {
     if (!getClass().equals(other.getClass())) {
       return getClass().getName().compareTo(other.getClass().getName());
     }
 
     int lastComparison = 0;
-    SwitchPortTuple typedOther = (SwitchPortTuple)other;
+    ClockEntry typedOther = (ClockEntry)other;
 
-    lastComparison = Boolean.valueOf(isSetDpid()).compareTo(typedOther.isSetDpid());
+    lastComparison = Boolean.valueOf(isSetNodeId()).compareTo(typedOther.isSetNodeId());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetDpid()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.dpid, typedOther.dpid);
+    if (isSetNodeId()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.nodeId, typedOther.nodeId);
       if (lastComparison != 0) {
         return lastComparison;
       }
     }
-    lastComparison = Boolean.valueOf(isSetPort()).compareTo(typedOther.isSetPort());
+    lastComparison = Boolean.valueOf(isSetVersion()).compareTo(typedOther.isSetVersion());
     if (lastComparison != 0) {
       return lastComparison;
     }
-    if (isSetPort()) {
-      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.port, typedOther.port);
+    if (isSetVersion()) {
+      lastComparison = org.apache.thrift.TBaseHelper.compareTo(this.version, typedOther.version);
       if (lastComparison != 0) {
         return lastComparison;
       }
@@ -337,15 +334,15 @@ import org.slf4j.LoggerFactory;
 
   @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder("SwitchPortTuple(");
+    StringBuilder sb = new StringBuilder("ClockEntry(");
     boolean first = true;
 
-    sb.append("dpid:");
-    sb.append(this.dpid);
+    sb.append("nodeId:");
+    sb.append(this.nodeId);
     first = false;
     if (!first) sb.append(", ");
-    sb.append("port:");
-    sb.append(this.port);
+    sb.append("version:");
+    sb.append(this.version);
     first = false;
     sb.append(")");
     return sb.toString();
@@ -353,6 +350,8 @@ import org.slf4j.LoggerFactory;
 
   public void validate() throws org.apache.thrift.TException {
     // check for required fields
+    // alas, we cannot check 'nodeId' because it's a primitive and you chose the non-beans generator.
+    // alas, we cannot check 'version' because it's a primitive and you chose the non-beans generator.
     // check for sub-struct validity
   }
 
@@ -374,15 +373,15 @@ import org.slf4j.LoggerFactory;
     }
   }
 
-  private static class SwitchPortTupleStandardSchemeFactory implements SchemeFactory {
-    public SwitchPortTupleStandardScheme getScheme() {
-      return new SwitchPortTupleStandardScheme();
+  private static class ClockEntryStandardSchemeFactory implements SchemeFactory {
+    public ClockEntryStandardScheme getScheme() {
+      return new ClockEntryStandardScheme();
     }
   }
 
-  private static class SwitchPortTupleStandardScheme extends StandardScheme<SwitchPortTuple> {
+  private static class ClockEntryStandardScheme extends StandardScheme<ClockEntry> {
 
-    public void read(org.apache.thrift.protocol.TProtocol iprot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol iprot, ClockEntry struct) throws org.apache.thrift.TException {
       org.apache.thrift.protocol.TField schemeField;
       iprot.readStructBegin();
       while (true)
@@ -392,18 +391,18 @@ import org.slf4j.LoggerFactory;
           break;
         }
         switch (schemeField.id) {
-          case 1: // DPID
-            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
-              struct.dpid = iprot.readI64();
-              struct.setDpidIsSet(true);
+          case 1: // NODE_ID
+            if (schemeField.type == org.apache.thrift.protocol.TType.I16) {
+              struct.nodeId = iprot.readI16();
+              struct.setNodeIdIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
             break;
-          case 2: // PORT
-            if (schemeField.type == org.apache.thrift.protocol.TType.I16) {
-              struct.port = iprot.readI16();
-              struct.setPortIsSet(true);
+          case 2: // VERSION
+            if (schemeField.type == org.apache.thrift.protocol.TType.I64) {
+              struct.version = iprot.readI64();
+              struct.setVersionIsSet(true);
             } else { 
               org.apache.thrift.protocol.TProtocolUtil.skip(iprot, schemeField.type);
             }
@@ -416,18 +415,24 @@ import org.slf4j.LoggerFactory;
       iprot.readStructEnd();
 
       // check for required fields of primitive type, which can't be checked in the validate method
+      if (!struct.isSetNodeId()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'nodeId' was not found in serialized data! Struct: " + toString());
+      }
+      if (!struct.isSetVersion()) {
+        throw new org.apache.thrift.protocol.TProtocolException("Required field 'version' was not found in serialized data! Struct: " + toString());
+      }
       struct.validate();
     }
 
-    public void write(org.apache.thrift.protocol.TProtocol oprot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol oprot, ClockEntry struct) throws org.apache.thrift.TException {
       struct.validate();
 
       oprot.writeStructBegin(STRUCT_DESC);
-      oprot.writeFieldBegin(DPID_FIELD_DESC);
-      oprot.writeI64(struct.dpid);
+      oprot.writeFieldBegin(NODE_ID_FIELD_DESC);
+      oprot.writeI16(struct.nodeId);
       oprot.writeFieldEnd();
-      oprot.writeFieldBegin(PORT_FIELD_DESC);
-      oprot.writeI16(struct.port);
+      oprot.writeFieldBegin(VERSION_FIELD_DESC);
+      oprot.writeI64(struct.version);
       oprot.writeFieldEnd();
       oprot.writeFieldStop();
       oprot.writeStructEnd();
@@ -435,45 +440,28 @@ import org.slf4j.LoggerFactory;
 
   }
 
-  private static class SwitchPortTupleTupleSchemeFactory implements SchemeFactory {
-    public SwitchPortTupleTupleScheme getScheme() {
-      return new SwitchPortTupleTupleScheme();
+  private static class ClockEntryTupleSchemeFactory implements SchemeFactory {
+    public ClockEntryTupleScheme getScheme() {
+      return new ClockEntryTupleScheme();
     }
   }
 
-  private static class SwitchPortTupleTupleScheme extends TupleScheme<SwitchPortTuple> {
+  private static class ClockEntryTupleScheme extends TupleScheme<ClockEntry> {
 
     @Override
-    public void write(org.apache.thrift.protocol.TProtocol prot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void write(org.apache.thrift.protocol.TProtocol prot, ClockEntry struct) throws org.apache.thrift.TException {
       TTupleProtocol oprot = (TTupleProtocol) prot;
-      BitSet optionals = new BitSet();
-      if (struct.isSetDpid()) {
-        optionals.set(0);
-      }
-      if (struct.isSetPort()) {
-        optionals.set(1);
-      }
-      oprot.writeBitSet(optionals, 2);
-      if (struct.isSetDpid()) {
-        oprot.writeI64(struct.dpid);
-      }
-      if (struct.isSetPort()) {
-        oprot.writeI16(struct.port);
-      }
+      oprot.writeI16(struct.nodeId);
+      oprot.writeI64(struct.version);
     }
 
     @Override
-    public void read(org.apache.thrift.protocol.TProtocol prot, SwitchPortTuple struct) throws org.apache.thrift.TException {
+    public void read(org.apache.thrift.protocol.TProtocol prot, ClockEntry struct) throws org.apache.thrift.TException {
       TTupleProtocol iprot = (TTupleProtocol) prot;
-      BitSet incoming = iprot.readBitSet(2);
-      if (incoming.get(0)) {
-        struct.dpid = iprot.readI64();
-        struct.setDpidIsSet(true);
-      }
-      if (incoming.get(1)) {
-        struct.port = iprot.readI16();
-        struct.setPortIsSet(true);
-      }
+      struct.nodeId = iprot.readI16();
+      struct.setNodeIdIsSet(true);
+      struct.version = iprot.readI64();
+      struct.setVersionIsSet(true);
     }
   }
 
